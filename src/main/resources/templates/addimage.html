@@ -14,17 +14,16 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <h1 class="text-center">Галерея</h1>
-        <a th:href="@{/addimage}" class="btn btn-success">Додати фото</a>
+        <h1 class="text-center">Додати фото</h1>
         <div class="row">
-
-            <div class="col-6 col-md-4 col-lg-3 mb-4" th:each="image : ${images}">
-                <div class="card mx-auto text-center">
-                    <a href="#url">
-                        <img class="card-img-top" th:src="${image.getName()}" alt="Sample Title">
-                    </a>
+            <form th:action="@{/addimage}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Обрати фото</label>
+                    <input type="file" name="name" id="name" class="form-control" >
                 </div>
-            </div>
+
+                <button type="submit" class="btn btn-primary">Додати</button>
+            </form>
 
         </div>
     </div>
