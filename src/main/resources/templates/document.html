@@ -14,21 +14,19 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <h1 class="text-center">Додати фото</h1>
+        <h1 class="text-center">Додати файл</h1>
         <div class="row">
-            <form th:action="@{/addimage}" method="post" enctype="multipart/form-data">
+            <form th:action="@{/document}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="name">Обрати фото</label>
+                    <label for="name">Обрати файл</label>
                     <input type="file" name="name" id="name" class="form-control" >
                 </div>
-
                 <button type="submit" class="btn btn-primary">Додати</button>
             </form>
 
         </div>
     </div>
 </div>
-
 
 <div layout:fragment="scripts">
 

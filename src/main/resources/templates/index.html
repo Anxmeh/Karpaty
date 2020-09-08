@@ -7,43 +7,52 @@
 
 <head>
     <title>Головна</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.8.2/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.8.2/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.8.2/dist/js/lightgallery-all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.8.2/dist/js/lightgallery-all.min.js"></script>
+    <script>
+        lightGallery(document.getElementById('lightgallery'));
+    </script>
+
 </head>
 <div layout:fragment="styles">
     <link th:href="@{'/lib/css/Chart.min.css'}" rel="stylesheet"/>
+    <link th:href="@{'/assets/lightgallery/css/lightgallery.css'}" rel="stylesheet"/>
 </div>
 <body>
 <div layout:fragment="content">
     <div class="container">
         <h1 class="text-center">Галерея</h1>
         <a th:href="@{/addimage}" class="btn btn-success">Додати фото</a>
-        <div class="row">
+        <a th:href="@{/document}" class="btn btn-success">Додати файл</a>
 
+        <div class="row" id="selector1">
             <div class="col-6 col-md-4 col-lg-3 mb-4" th:each="image : ${images}">
                 <div class="card mx-auto text-center">
-                    <a href="#url">
+                    <div class="item" th:data-src="${image.getName()}">
                         <img class="card-img-top" th:src="${image.getName()}" alt="Sample Title">
-                    </a>
+
+                        <!--                 <div class="item" th:data-src="'/files/' + ${image.getName()}">-->
+                        <!--                      <img class="card-img-top" th:src="'/files/' + ${image.getName()}" alt="Sample Title">-->
+                    </div>
                 </div>
             </div>
-
         </div>
+
+        <script type="text/javascript">
+            $('#selector1').lightGallery({
+                selector: '.item'
+            });
+        </script>
+
     </div>
-
-
-
-<!--    <p sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></p>-->
-<!--    <p sec:authorize="isAnonymous()"><a th:href="@{/register}">Register</a></p>-->
-<!--    <p><a th:href="@{/home}">User Home</a></p>-->
-<!--    <p><a th:href="@{/document}">Документи</a></p>-->
-<!--    <p><a th:href="@{/products}">Продукти</a></p>-->
-<!--    <p><a th:href="@{/admin/home}">Admin Home</a></p>-->
-<!--    <p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></p>-->
 </div>
 
 
-<div layout:fragment="scripts">
-
-</div>
+    <div layout:fragment="scripts">
+    </div>
 
 </body>
 
